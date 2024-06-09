@@ -25,6 +25,8 @@ def Init_GPIO():
     GPIO.output(in2, False)
     GPIO.output(in3, False)
 
+Init_GPIO()
+
 def power_on():
     print("turning power on")
     GPIO.output(in2, True)
