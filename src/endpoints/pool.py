@@ -42,8 +42,21 @@ def Pool_heating_on():
         GPIO.output(in1, True)
         GPIO.output(in3, True)
         power_on()
-        return "Pool Heating On"
+        return "Pool Heating ON"
     else:
         print("Heating already ON")
         return "Pool Heating already On"
+    
+def Pool_heating_off():
+    global Heating
+    if Heating == True:
+        Heating = False
+        print("pool heating off")
+        GPIO.output(in1, False)
+        GPIO.output(in3, False)
+        power_on()
+        return "Pool Heating OFF"
+    else:
+        print("Heating is already OFF")
+        return "Pool Heating already OFF"
     

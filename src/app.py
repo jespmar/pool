@@ -18,9 +18,12 @@ app=Flask(__name__)
 
 
 @app.get("/pool_on")
-def get_users():
+def pool_on():
     return Pool_heating_on()
 
+@app.get("/pool_off")
+def pool_off():
+    return Pool_heating_on()
 
 if __name__=="__main__":
     app.run(port=8887, debug=True)
