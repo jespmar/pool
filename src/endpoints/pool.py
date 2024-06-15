@@ -39,7 +39,7 @@ def Init_GPIO():
 def power_on():
     print("turning power on")
     GPIO.output(in2, True)
-    time.sleep(15)
+    time.sleep(160)
     print("turning power off")
     GPIO.output(in2, False)
 
