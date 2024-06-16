@@ -1,22 +1,17 @@
 from pymongo import MongoClient
+from pymongo.server_api import ServerApi
 
 import os
 from dotenv import load_dotenv
 
-HOST = os.getenv('MONGO_HOST')
-PORT = int(os.getenv('MONGO_PORT'))
-USERNAME = os.getenv('MONGO_USERNAME')
-PASSWORD = os.getenv('MONGO_PASSWORD')
 
-
-config={
-    "host":"mongo-nodeport-svc",
-    "port":27017,
-    "username":"adminuser",
-    "password":"password123"
-}
+uri = os.getenv('MONGO_URI')
 
 class Connection:
     def __new__(cls, database):
-        connection=MongoClient(**config)
-        return connection[database]
+
+        uri = "mongodb+srv://pool:eIqbTV9s47gwohZE@cluster0.c259gkh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+        client = MongoClient(uri, server_api=ServerApi(
+        version="1", strict=True, deprecation_errors=True))
+
+        return client[database]
