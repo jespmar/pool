@@ -2,6 +2,8 @@ import glob
 
 import os
 
+from datetime import datetime
+
 import time
 
 from db import Connection
@@ -38,15 +40,12 @@ def read_temp():
     if equals_pos != -1:
         temp_string = lines[1][equals_pos+2:]
         temp_c = float(temp_string) / 1000.0
-        return {"temp" : temp_c}
+        return {"temp" : temp_c, "dateTime": datetime.now()}
     
 
 def Insert_temp(content):
 
-
-    print("Insering temp")
-
-    temperature = db.temperature
+    temperature = db.pool_temp
     result = temperature.insert_one(content)
     print(result)
 
@@ -58,6 +57,8 @@ def Insert_temp(content):
 
 
 while True:
-    Insert_temp(read_temp())
+    temp = read_temp()
+    Insert_temp(temp)
     print("Inserted temp")
-    time.sleep(60)
+    print(temp)
+    time.sleep(600)
