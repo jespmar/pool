@@ -35,6 +35,8 @@ while True:
     # Get Pool temp from Database
     temp = Get_temp()
     pool_temp = temp["temp"]
+    print("Current Temp")
+    print("Pool Temp")
     if pool_temp < goalTemperature - 0.5:
         # Check current state
         Pool_heating_on()
