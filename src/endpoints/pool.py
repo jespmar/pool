@@ -25,15 +25,10 @@ Heating = False
 
 db=Connection('pool_temp_test')
 
-def Reset():
-    logger.info("Resetting to prevent damage")
-    Write_state("off")
-    GPIO.output(in1, False)
-    GPIO.output(in3, False)
-    power_on()
-    logger.info("Reset Complete")
 
 def Init_GPIO():
+
+    logger.info("Initializing GPIO")
 
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(in1, GPIO.OUT)
@@ -44,8 +39,13 @@ def Init_GPIO():
     GPIO.output(in2, False)
     GPIO.output(in3, False)
 
-    Reset()
 
+def Reset():
+    logger.info("Resetting to prevent damage")
+    GPIO.output(in1, False)
+    GPIO.output(in3, False)
+    power_on()
+    logger.info("Reset Complete")
 
 def Insert_state(state):
 
