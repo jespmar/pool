@@ -49,9 +49,12 @@ def Insert_state(state):
     return dumps(state, json_options=RELAXED_JSON_OPTIONS), {"Content-Type": "application/json"}
 
 def Reset_state():
+    logger.info("checking state")
     global Heating
     f = open("../heating_state.txt", "r")
+    logger.info("Current State:")
     state = f.read()
+    logger.info(state)
     if state == "on":
         Heating = True
         logger.info("Resetting state to ON")
