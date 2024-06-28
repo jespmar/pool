@@ -21,6 +21,8 @@ from endpoints.pool import Pool_heating_on, Pool_heating_off, Init_GPIO, read_te
 
 db=Connection('pool_temp_test')
 
+Init_GPIO()
+
 def Get_temp():
 
     temperature = db.pool_temp
