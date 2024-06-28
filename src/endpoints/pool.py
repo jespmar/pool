@@ -25,6 +25,14 @@ Heating = False
 
 db=Connection('pool_temp_test')
 
+def Reset():
+    logger.info("Resetting to prevent damage")
+    Write_state("off")
+    GPIO.output(in1, False)
+    GPIO.output(in3, False)
+    power_on()
+    logger.info("Reset Complete")
+
 def Init_GPIO():
 
     GPIO.setmode(GPIO.BOARD)
@@ -35,6 +43,9 @@ def Init_GPIO():
     GPIO.output(in1, False)
     GPIO.output(in2, False)
     GPIO.output(in3, False)
+
+    Reset()
+
 
 def Insert_state(state):
 
@@ -48,17 +59,7 @@ def Insert_state(state):
 
     return dumps(state, json_options=RELAXED_JSON_OPTIONS), {"Content-Type": "application/json"}
 
-def Reset_state():
-    logger.info("checking state")
-    global Heating
-    f = open("../heating_state.txt", "r")
-    logger.info("Current State:")
-    state = f.read()
-    logger.info(state)
-    if state == "on":
-        Heating = True
-        logger.info("Resetting state to ON")
-        GPIO.output(in3, True)
+    
 
 def Write_state(state):
     f = open("../heating_state.txt", "w")

@@ -16,11 +16,10 @@ logger = logging.getLogger(__name__)
 logging.basicConfig(filename='myapp.log', level=logging.INFO)
 logger.info("Python Pool Temp Service is running")
 
-from endpoints.pool import Pool_heating_on, Pool_heating_off, Init_GPIO, Write_state, Reset_state
+from endpoints.pool import Pool_heating_on, Pool_heating_off, Init_GPIO, Write_state
 db=Connection('pool_temp_test')
 
 Init_GPIO()
-Reset_state()
 
 def Get_temp():
 
@@ -39,9 +38,7 @@ while True:
     if pool_temp < goalTemperature - 1:
         # Check current state
         Pool_heating_on()
-        logger.info("on")
     if pool_temp > goalTemperature + 0.4:
         # Check current state
         Pool_heating_off()
-        logger.info("off")
     time.sleep(600)
