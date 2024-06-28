@@ -20,7 +20,7 @@ from endpoints.pool import Pool_heating_on, Pool_heating_off, Init_GPIO, Write_s
 db=Connection('pool_temp_test')
 
 Init_GPIO()
-#Reset_state()
+Reset_state()
 
 def Get_temp():
 
@@ -36,14 +36,14 @@ while True:
     pool_temp = temp["temp"]
     logger.info("Current Temp")
     logger.info(pool_temp)
-    #if pool_temp < goalTemperature - 1:
+    if pool_temp < goalTemperature - 1:
         # Check current state
-        #Pool_heating_on()
-        #Write_state("on")
-        #print("on")
-    #if pool_temp > goalTemperature + 0.5:
+        Pool_heating_on()
+        Write_state("on")
+        print("on")
+    if pool_temp > goalTemperature + 0.5:
         # Check current state
-        #Pool_heating_off()
-        #Write_state("off")
-        #print("off")
+        Pool_heating_off()
+        Write_state("off")
+        print("off")
     time.sleep(30)

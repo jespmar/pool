@@ -2,6 +2,11 @@ from flask import Flask
 
 import glob
 
+from bson import ObjectId
+from bson.json_util import dumps, RELAXED_JSON_OPTIONS
+from bson.objectid import ObjectId
+
+from db import Connection
 
 from datetime import datetime
 
@@ -18,6 +23,8 @@ in3 = 15
 
 Heating = False
 
+db=Connection('pool_temp_test')
+
 def Init_GPIO():
 
     GPIO.setmode(GPIO.BOARD)
@@ -29,6 +36,17 @@ def Init_GPIO():
     GPIO.output(in2, False)
     GPIO.output(in3, False)
 
+def Insert_state(state):
+
+    State = db.state
+    result = State.insert_one(state)
+    print(result)
+
+    state.update({"_id":str(result.inserted_id)})
+    if not result.inserted_id:
+        return {"message":"Failed to insert"}, 500
+
+    return dumps(state, json_options=RELAXED_JSON_OPTIONS), {"Content-Type": "application/json"}
 
 def Reset_state():
     global Heating
@@ -41,7 +59,9 @@ def Reset_state():
 
 def Write_state(state):
     f = open("../heating_state.txt", "w")
+    s = {"state": state, "dateTime": datetime.now()}
     f.write(state)
+    Insert_state(s)
 
 def power_on():
     print("turning power on")
