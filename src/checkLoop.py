@@ -31,6 +31,7 @@ def Get_temp():
     return result[0]
 
 while True:
+    print("Checking for Changes")
     # Get Pool temp from Database
     temp = Get_temp()
     pool_temp = temp["temp"]
