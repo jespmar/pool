@@ -40,7 +40,7 @@ while True:
         # Check current state
         Pool_heating_on()
         logger.info("on")
-    if pool_temp > goalTemperature + 0.5:
+    if pool_temp > goalTemperature + 0.4:
         # Check current state
         Pool_heating_off()
         logger.info("off")
