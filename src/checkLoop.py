@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 logging.basicConfig(filename='myapp.log', level=logging.INFO)
 logger.info("Python Pool Temp Service is running")
 
-from endpoints.pool import Pool_heating_on, Pool_heating_off, Init_GPIO, read_temp, Write_state, Reset_state
+from endpoints.pool import Pool_heating_on, Pool_heating_off, Init_GPIO, Write_state, Reset_state
 db=Connection('pool_temp_test')
 
 Init_GPIO()
