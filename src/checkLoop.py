@@ -27,18 +27,18 @@ def Get_temp():
 while True:
     print("Checking for Changes")
     # Get Pool temp from Database
-    temp = Get_temp()
-    pool_temp = temp["temp"]
+    #temp = Get_temp()
+    #pool_temp = temp["temp"]
     #logger.info("Current Temp")
     #logger.info(pool_temp)
-    if pool_temp < goalTemperature - 1:
+    #if pool_temp < goalTemperature - 1:
         # Check current state
         #Pool_heating_on()
         #Write_state("on")
-        print("on")
-    if pool_temp > goalTemperature + 0.5:
+        #print("on")
+    #if pool_temp > goalTemperature + 0.5:
         # Check current state
         #Pool_heating_off()
         #Write_state("off")
-        print("off")
+        #print("off")
     time.sleep(600)
