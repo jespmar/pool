@@ -35,8 +35,6 @@ db=Connection('pool_temp_test')
 
 def Init_GPIO():
 
-    GPIO.setwarnings(False)
-
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(in1, GPIO.OUT)
     GPIO.setup(in2, GPIO.OUT)
