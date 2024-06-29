@@ -79,7 +79,6 @@ def Pool_heating_on():
     if Heating == False:
         Heating = True
         logger.info("Pool heating on")
-        Write_state("on")
         GPIO.output(in1, True)
         GPIO.output(in3, True)
         power_on()
