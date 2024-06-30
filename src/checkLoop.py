@@ -20,7 +20,7 @@ from endpoints.pool import Pool_heating_on, Pool_heating_off, Init_GPIO, Reset
 db=Connection('pool_temp_test')
 
 Init_GPIO()
-#Reset()
+Reset()
 
 def Get_temp():
 
