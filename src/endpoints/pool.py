@@ -59,7 +59,9 @@ def Insert_state(state):
 
     return dumps(state, json_options=RELAXED_JSON_OPTIONS), {"Content-Type": "application/json"}
 
-    
+def Pool_mc_on():
+    GPIO.output(in3, True)
+
 
 def Write_state(state):
     f = open("../heating_state.txt", "w")
