@@ -21,7 +21,7 @@ logger.info("Python Pool Temp Service is running")
 #from endpoints.pool import Pool_heating_on, Pool_heating_off, Init_GPIO, Reset
 db=Connection('pool_temp_test')
 
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 
 in1 = 11
 in2 = 13
@@ -32,16 +32,16 @@ in3 = 15
 def Init_GPIO():
 
     logger.info("Initializing GPIO")
-    #GPIO.setmode(GPIO.BOARD)
-    #GPIO.setup(in3, GPIO.OUT)
-    #GPIO.output(in3, False)
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(in3, GPIO.OUT)
+    GPIO.output(in3, False)
 
 def Pool_on():
     global heating
     if heating == False:
         # Set pool GPIO true
         logger.info("Turning pool on")
-        #GPIO.output(in3, True)
+        GPIO.output(in3, True)
         heating = True
     else:
         logger.info("Heating is allready on")
@@ -51,7 +51,7 @@ def Pool_off():
     if heating == True:
         # Set pool GPIO false
         logger.info("Turning pool off")
-    #GPIO.output(in3, False)
+        GPIO.output(in3, False)
         heating = False
     else:
         logger.info("Heating is allready off")
