@@ -37,21 +37,21 @@ def Init_GPIO():
     GPIO.output(in3, False)
 
 def Pool_on():
+    global heating
     if heating == False:
         # Set pool GPIO true
         logger.info("Turning pool on")
         GPIO.output(in3, True)
-        global heating
         heating = True
     else:
         logger.info("Heating is allready on")
 
 def Pool_off():
+    global heating
     if heating == True:
         # Set pool GPIO false
         logger.info("Turning pool off")
         GPIO.output(in3, False)
-        global heating
         heating = False
     else:
         logger.info("Heating is allready off")
