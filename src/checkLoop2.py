@@ -91,10 +91,8 @@ def Check_temp(config):
     print("Delay Cooling:", delayCooling)
 
     if (temp > goal_temp + delayHeating):
-        logger.info("Turn off")
         Pool_off()
     elif (temp < goal_temp - delayCooling):
-        logger.info("Turn on")
         Pool_on()
     elif ((temp > goal_temp - delayCooling) and (temp < goal_temp + delayHeating)): 
         logger.info("In the middle, just do nothing")
