@@ -79,8 +79,10 @@ def Check_temp(config):
     # Get Temperature
     temp = Get_temp()["temp"]
     goal_temp = config["goal_temp"]
-    print("current temp:", temp)
-    print("goal temp:", goal_temp)
+    logger.info("current temp:")
+    logger.info(temp)
+    logger.info("goal temp:")
+    logger.info(goal_temp)
 
     delayHeating = config["delayHeating"]
     delayCooling = config["delayCooling"]
@@ -116,4 +118,4 @@ while True:
     logger.info("Checking for Changes")
     logger.info(config)
     Check_config(config)
-    time.sleep(20)
+    time.sleep(60)
