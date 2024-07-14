@@ -101,7 +101,8 @@ def Check_temp(config):
 
 def Check_config(config):
     # Check Power State
-    logger.info({"heating": heating})
+    logger.info("heating")
+    logger.info(heating)
     if config["heating"]:
         # Turn heating on
         Pool_on()
